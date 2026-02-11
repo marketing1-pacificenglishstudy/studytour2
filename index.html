@@ -648,17 +648,18 @@
             background-color: rgba(0,0,0,0.8);
             animation: fadeIn 0.3s;
         }
-        .modal-content {
-            position: relative;
-            background: white;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 1000px;
-            height: 80%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: slideIn 0.3s;
+        ..modal-content {
+    position: relative;
+    background: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden; /* 讓四角圓角可以裁切 iframe */
+    width: 90%;
+    max-width: 1000px;
+    height: 80%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s;
         }
         .close {
             position: absolute;
@@ -672,11 +673,11 @@
         }
         .close:hover { color: #ffc107; }
         .modal iframe {
-            width: 100%;
-            height: calc(100% - 60px);
-            border: none;
-            border-radius: 0 0 12px 12px;
-        }
+    width: 100%;
+    height: calc(100% - 60px);
+    border: none;
+    border-radius: 0; /* 交給 .modal-content 的圓角 + overflow 來統一裁切 */
+}
         @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
         @keyframes slideIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
 
